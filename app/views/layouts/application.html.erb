@@ -43,6 +43,11 @@
         </li>
       <% end %>
     </header>
+    <main>
+      <div>
+        <%= flash[:notice] %>
+      </div>
+    </main>
     <%= yield %>
   </body>
     <footer>
