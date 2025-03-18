@@ -12,45 +12,52 @@
   </head>
 
   <body>
-    <header>
-      <li>
-      <%= link_to "Bookers", root_path %></li>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "Home", user_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to "Users", users_path %>
-        </li>
-        <li>
-          <%= link_to "Books", books_path %>
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Home", root_path %>
-        </li>
-        <li>
-          <%= link_to "About", about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
-      <% end %>
+    <header class="bg-dark container-fluid fs-1">
+      <div class="header row px-1 py-4">
+          <p class="col-2">
+            <%= link_to "Bookers", root_path %>
+          </p>
+        <div class="col-6 offset-4">
+          <div class="row">
+            <% if user_signed_in? %>
+              <div class="col">
+                <div><%= link_to "Home", user_path(current_user.id) %></div>
+              </div>
+              <div class="col">
+                <div><%= link_to "Users", users_path %></div>
+              </div>
+              <div class="col">
+                <div><%= link_to "Books", books_path %></div>
+              </div>
+              <div class="col">
+                <div><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
+              </div>
+            <% else %>
+              <div class="col">
+                <%= link_to "Home", root_path %>
+              </div>
+              <div class="col">
+                <%= link_to "About", about_path %>
+              </div>
+              <div class="col">
+                <%= link_to "Sign up", new_user_registration_path %>
+              </div>
+              <div class="col">
+                <%= link_to "Log in", new_user_session_path %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </header>
     <main>
       <div>
         <%= flash[:notice] %>
       </div>
+      <%= yield %>
     </main>
-    <%= yield %>
-  </body>
-    <footer>
-      CopyRight Infratop.inc
+    <footer class="text-center">
+      <p>CopyRight Infratop.inc</p>
     </footer>
+  </body>
 </html>
