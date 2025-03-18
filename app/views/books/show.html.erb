@@ -1,40 +1,26 @@
-<h1>User info</h1>
+<%= render 'list' %>
 
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
+
+<div class="offset-md-1">
 </div>
-<h3>name <%= @user.name %></h3>
 
-<h1>New book</h1>
-
-<% if @book.errors.any? %>
-  <%= @book.errors.count %> errors prohibited this obj from being saved:
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @book do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-
-  <h4>Opinion</h4>
-  <%= f.text_area :body %><br>
-
-  <%= f.submit 'Create Book' %>
-<% end %>
-
-
-<h1>Book detail</h1>
-
-  <p><%= image_tag @user.get_profile_image(100,100) %></p>
-  <p><%= @user.name %></p>
-  <p><%= @book.title %></p>
-  <p><%= @book.body %></p>
-
-  <% if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book.id) %>
-    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
-  <% end %>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <h1>Book detail</h1>
+      <tbody>
+        <tr>
+          <td>
+            <%= image_tag @user.get_profile_image(100,100) %>
+            <p><%= link_to @user.name, user_path(@user.id) %></p>
+          </td>
+          <td><%= link_to @book.title, book_path(@book.id) %></td>
+          <td><%= @book.body %></td>
+          
+          <% if @book.user == current_user %>
+            <td><%= link_to "Edit", edit_book_path(@book.id) %></td>
+            <td><%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
