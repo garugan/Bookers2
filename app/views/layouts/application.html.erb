@@ -21,29 +21,23 @@
           <div class="row">
             <% if user_signed_in? %>
               <div class="col">
-                <div><%= link_to "Home", user_path(current_user.id) %></div>
-              </div>
-              <div class="col">
-                <div><%= link_to "Users", users_path %></div>
-              </div>
-              <div class="col">
-                <div><%= link_to "Books", books_path %></div>
-              </div>
-              <div class="col">
-                <div><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
+                <i class="fa-solid fa-house"></i><%= link_to "Home", user_path(current_user.id) %>
+                <i class="fa-solid fa-users"></i><%= link_to "Users", users_path %>
+                <i class="fa-solid fa-book-open"></i><%= link_to "Books", books_path %>
+                <i class="fa-solid fa-right-from-bracket"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %>
               </div>
             <% else %>
               <div class="col">
-                <%= link_to "Home", root_path %>
+                <i class="fa-solid fa-house"></i><%= link_to "Home", root_path %>
               </div>
               <div class="col">
-                <%= link_to "About", about_path %>
+                <i class="fa-solid fa-link"></i><%= link_to "About", about_path %>
               </div>
               <div class="col">
-                <%= link_to "Sign up", new_user_registration_path %>
+                <i class="fa-solid fa-user-plus"></i><%= link_to "Sign up", new_user_registration_path %>
               </div>
               <div class="col">
-                <%= link_to "Log in", new_user_session_path %>
+                <i class="fa-solid fa-right-to-bracket"></i><%= link_to "Log in", new_user_session_path %>
               </div>
             <% end %>
           </div>
